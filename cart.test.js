@@ -1,5 +1,5 @@
 const {db,closeConnection}= require('./dbConnection');
-const {createCart}=require('./cart');
+const {createCart} =require('./cart');
 
 test('createCart creates a cart for username', async ()=>{
     await db('carts').truncate();
