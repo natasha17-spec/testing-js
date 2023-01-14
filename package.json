@@ -4,7 +4,7 @@
   "description": "Nataliya",
   "main": "Card.js",
   "scripts": {
-    "test": "npm run test"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -21,7 +21,11 @@
     "url": "https://github.com/natasha17-spec/testing-js/issues"
   },
   "homepage": "https://github.com/natasha17-spec/testing-js#readme",
-  "dependencies": {
+  "devDependencies": {
     "jest": "^29.3.1"
+  },
+  "dependencies": {
+    "knex": "^2.4.0",
+    "sqlite3": "^5.1.4"
   }
 }
