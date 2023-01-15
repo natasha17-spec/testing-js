@@ -1,4 +1,4 @@
-const {db, closeConnection} = require('./dbConnection');
+const {db, closeConnection} = require('../dbConnection');
 const {createCart, addItem} = require('./cart');
 
 beforeEach(async() =>{
