@@ -24,22 +24,17 @@ describe('AddItem', () => {
         inventory.set('cheesecake', 1)
         const initialItemsResponse = await addItem('lucas','cheesecake');
         expect(await initialItemsResponse.json()).toEqual(['cheesecake']);
-
         expect(inventory.get('cheesecake')).toBe(0);
         expect(carts.get('lucas')).toEqual(['cheesecake']);
-
         const failedAddItem = await addItem('lucas','cheesecake');
         expect(failedAddItem.status).toBe(404)
     });
 })
 
-
 test("remove items to a cart", async () => {
     const addItemResponse = await addItem("lucas", "cheesecake");
     expect(await addItemResponse.json()).toEqual(["cheesecake"]);
-
     await removeItems("lucas", "cheesecake");
-
     const removeItemsResponse = await getItems("lucas");
     expect(await removeItemsResponse.json()).toEqual([]);
 });
