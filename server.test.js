@@ -1,4 +1,4 @@
-const {app, resetState} = require("./server");
+const {app, inventory, carts} = require("./server");
 const fetch = require("isomorphic-fetch");
 
 const apiRoot = "http://localhost:3000";
@@ -17,19 +17,22 @@ const removeItems = (username, item) => {
     return fetch(`${apiRoot}/carts/${username}/items/${item}`, {method: "DELETE"});
 };
 
-beforeEach(() => resetState());
+
 afterAll(() => app.close());
+describe('AddItem', () => {
+    test("adding items to a cart", async () => {
+        inventory.set('cheesecake', 1)
+        const initialItemsResponse = await addItem('lucas','cheesecake');
+        expect(await initialItemsResponse.json()).toEqual(['cheesecake']);
 
-test("adding items to a cart", async () => {
-    const initialItemsResponse = await getItems("lucas");
-    expect(initialItemsResponse.status).toBe(404);
+        expect(inventory.get('cheesecake')).toBe(0);
+        expect(carts.get('lucas')).toEqual(['cheesecake']);
 
-    const addItemResponse = await addItem("lucas", "cheesecake");
-    expect(await addItemResponse.json()).toEqual(["cheesecake"]);
+        const failedAddItem = await addItem('lucas','cheesecake');
+        expect(failedAddItem.status).toBe(404)
+    });
+})
 
-    const finalItemsResponse = await getItems("lucas");
-    expect(await finalItemsResponse.json()).toEqual(["cheesecake"]);
-});
 
 test("remove items to a cart", async () => {
     const addItemResponse = await addItem("lucas", "cheesecake");
