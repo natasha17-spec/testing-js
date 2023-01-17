@@ -20,14 +20,28 @@ const removeItems = (username, item) => {
 
 afterAll(() => app.close());
 describe('AddItem', () => {
-    test("adding items to a cart", async () => {
-        inventory.set('cheesecake', 1)
-        const initialItemsResponse = await addItem('lucas','cheesecake');
-        expect(await initialItemsResponse.json()).toEqual(['cheesecake']);
+    beforeEach(()=> carts.clear());
+    beforeEach(()=> inventory.set("cheesecake",1));
+
+    test('correct response', async ()=>{
+        const addItemResponse = await addItem('lucas','cheesecake');
+        expect(addItemResponse.status).toBe(200)
+        expect(await addItemResponse.json()).toEqual(['cheesecake']);
+    });
+    test('inventory update', async ()=>{
+        await addItem('lucas','cheesecake')
         expect(inventory.get('cheesecake')).toBe(0);
-        expect(carts.get('lucas')).toEqual(['cheesecake']);
-        const failedAddItem = await addItem('lucas','cheesecake');
-        expect(failedAddItem.status).toBe(404)
+    });
+
+    test('cart update', async ()=>{
+        await addItem('keith','cheesecake')
+        expect(carts.get('keith')).toEqual(['cheesecake']);
+    });
+
+    test('soldout items', async ()=>{
+        inventory.set('cheesecake', 0);
+        const failedAddItem = await addItem('lucas','cheesecake')
+        expect(failedAddItem.status).toBe(404);
     });
 })
 
