@@ -8,4 +8,13 @@ const addToInventory = (item, n) => {
     return newQuantity;
 }
 
-module.exports = {inventory, addToInventory}
+const getInventory = () => {
+  const contentArray = Array.from(inventory.entries());
+  const contents = contentArray.reduce(
+      (contents, [name, quantity])=> {
+        return {...contents, [name]: quantity}
+      },{}
+  );
+  return {...contents}
+}
+module.exports = {inventory, addToInventory,getInventory}
