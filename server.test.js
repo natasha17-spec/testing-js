@@ -17,7 +17,6 @@ const removeItems = (username, item) => {
     return fetch(`${apiRoot}/carts/${username}/items/${item}`, {method: "DELETE"});
 };
 
-
 afterAll(() => app.close());
 describe('AddItem', () => {
     beforeEach(()=> carts.clear());
