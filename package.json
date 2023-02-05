@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "browserify index.jsx -o bundle.js",
-    "dev": "http-server ./",
+    "dev": "http-server ./ -o",
     "start": "react-scripts start"
   },
   "keywords": [],
@@ -17,11 +17,14 @@
     "@babel/preset-react": "^7.9.4",
     "babelify": "^10.0.0",
     "browserify": "^16.5.1",
-    "http-server": "^0.12.3"
+    "http-server": "^0.12.3",
+    "jest": "^27.5.1"
   },
   "dependencies": {
+    "prettier": "^2.8.3",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "react-scripts": "^5.0.1"
   },
   "browserify": {
     "transform": [
