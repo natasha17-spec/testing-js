@@ -1,34 +1,51 @@
 {
-  "name": "testing-js",
+  "name": "2_transforming_jsx",
   "version": "1.0.0",
-  "description": "Nataliya",
-  "main": "Cart/Card.js",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "build": "browserify index.jsx -o bundle.js",
+    "dev": "http-server ./",
+    "start": "react-scripts start"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/natasha17-spec/testing-js.git"
-  },
-  "keywords": [
-    "testing",
-    "js",
-    "react"
-  ],
-  "author": "Nataliya",
+  "keywords": [],
+  "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/natasha17-spec/testing-js/issues"
-  },
-  "homepage": "https://github.com/natasha17-spec/testing-js#readme",
   "devDependencies": {
-    "jest": "^29.3.1 --forceExit"
+    "@babel/core": "^7.9.6",
+    "@babel/preset-env": "^7.9.6",
+    "@babel/preset-react": "^7.9.4",
+    "babelify": "^10.0.0",
+    "browserify": "^16.5.1",
+    "http-server": "^0.12.3"
   },
   "dependencies": {
-    "isomorphic-fetch": "^3.0.0",
-    "knex": "^2.4.0",
-    "koa": "^2.14.1",
-    "koa-router": "^12.0.0",
-    "sqlite3": "^5.1.4"
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  },
+  "browserify": {
+    "transform": [
+      [
+        "babelify",
+        {
+          "presets": [
+            "@babel/preset-env",
+            "@babel/preset-react"
+          ]
+        }
+      ]
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
