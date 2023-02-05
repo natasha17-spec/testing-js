@@ -3,13 +3,11 @@
 
 var _reactDom = _interopRequireDefault(require("react-dom"));
 var _react = _interopRequireDefault(require("react"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-var App = function App() {
-  return /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement("h1", null, "Inventory Contents"));
-};
-_reactDom["default"].render( /*#__PURE__*/_react["default"].createElement(App, null), document.getElementById("app"));
+var _App = require("./src/App.jsx");
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+_reactDom.default.render( /*#__PURE__*/_react.default.createElement(_App.App, null), document.getElementById("app"));
 
-},{"react":11,"react-dom":8}],2:[function(require,module,exports){
+},{"./src/App.jsx":18,"react":11,"react-dom":8}],2:[function(require,module,exports){
 /*
 object-assign
 (c) Sindre Sorhus
@@ -28785,4 +28783,19 @@ if ("development" === 'production') {
   module.exports = require('./cjs/scheduler-tracing.development.js');
 }
 
-},{"./cjs/scheduler-tracing.development.js":12,"./cjs/scheduler-tracing.production.min.js":13}]},{},[1]);
+},{"./cjs/scheduler-tracing.development.js":12,"./cjs/scheduler-tracing.production.min.js":13}],18:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.App = void 0;
+var _reactDom = _interopRequireDefault(require("react-dom"));
+var _react = _interopRequireDefault(require("react"));
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+const App = () => {
+  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h1", null, "Inventory Contents"));
+};
+exports.App = App;
+
+},{"react":11,"react-dom":8}]},{},[1]);
